@@ -60,22 +60,7 @@ La API expone contenido estructurado sobre múltiples tecnologías y lenguajes.
 | Buenas prácticas | SOLID, Clean Code, etc. |
 | Patrones de diseño | Factory, Observer, Repository, etc. |
 
-### Campos por recurso
 
-| Campo | Descripción |
-|---|---|
-| `definition` | Definición concisa del concepto |
-| `explanation` | Explicación detallada |
-| `syntax` | Sintaxis del lenguaje o herramienta |
-| `code_examples` | Ejemplos de código listos para usar |
-| `exercises` | Ejercicios prácticos |
-| `quiz` | Preguntas de evaluación |
-| `common_errors` | Errores frecuentes y cómo evitarlos |
-| `best_practices` | Buenas prácticas recomendadas |
-| `references` | Referencias y documentación oficial |
-| `related_topics` | Temas relacionados |
-| `difficulty` | Nivel de dificultad |
-| `study_time` | Tiempo estimado de estudio |
 
 ---
 
@@ -108,25 +93,30 @@ PostgreSQL (Neon)       Redis Cache
 ---
 
 
-## Documentación de la API
+## Uso de la API
 
-La documentación completa de endpoints está disponible via **Swagger/OpenAPI** en:
+La API está en producción y lista para ser consumida de manera pública.
+
+**Base URL:** `https://devknowledge-api.onrender.com/api`
+
+### Ejemplo de Petición
+
+Obtener todos los temas disponibles (Topics):
+```bash
+curl -X GET https://devknowledge-api.onrender.com/api/topics
+```
+
+## Documentación de Endpoints
+
+La documentación interactiva completa (Swagger/OpenAPI) para explorar todas las rutas disponibles la encuentras en:
 
 ```
-http://localhost:8080/api/documentation
+https://devknowledge-api.onrender.com/api/documentation
 ```
 
 ---
 
-## Contributing
 
-Las contribuciones son bienvenidas. Por favor, sigue este flujo:
-
-1. Haz un fork del proyecto.
-2. Crea tu rama: `git checkout -b feature/nueva-funcionalidad`
-3. Haz commit: `git commit -m 'feat: add nueva funcionalidad'`
-4. Push: `git push origin feature/nueva-funcionalidad`
-5. Abre un Pull Request.
 
 ---
 
