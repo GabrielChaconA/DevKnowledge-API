@@ -1,4 +1,4 @@
-FROM php:8.3-cli-alpine
+FROM php:8.4-cli-alpine
 
 # Variables de entorno para que Composer no falle
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
