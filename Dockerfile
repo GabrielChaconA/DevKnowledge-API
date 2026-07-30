@@ -40,8 +40,8 @@ WORKDIR /app
 # Copiar todos los archivos del proyecto
 COPY . .
 
-# Instalar dependencias de Laravel (--no-scripts evita errores si falta conexión a BD en el build)
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+# Instalar dependencias de Laravel
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --ignore-platform-reqs
 
 # Descargar el binario de RoadRunner (necesario para Octane)
 RUN ./vendor/bin/rr get-binary
