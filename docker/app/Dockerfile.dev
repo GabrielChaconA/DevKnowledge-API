@@ -33,7 +33,7 @@ WORKDIR /var/www/html
 EXPOSE 8000
 
 # En dev, el código se monta como volumen.
-# El entrypoint descarga RoadRunner si no existe y lanza Octane en modo watch.
-CMD sh -c "[ -f vendor/bin/rr ] || composer run-script post-autoload-dump; \
-           [ -f rr ] || vendor/bin/rr get-binary -n; \
-           php artisan octane:start --server=roadrunner --host=0.0.0.0 --port=8000 --watch"
+# Si el binario rr ya existe en el proyecto (descargado previamente), lo usa directamente.
+CMD sh -c "[ -f vendor/autoload.php ] || composer install --no-interaction; \
+           [ -f rr ] || (./vendor/bin/rr get-binary -n); \
+           php artisan octane:start --server=roadrunner --host=0.0.0.0 --port=8000"
