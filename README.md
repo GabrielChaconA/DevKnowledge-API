@@ -17,12 +17,12 @@
   </p>
 
   <p>
-    <a href="#-descripción">Descripción</a> ·
-    <a href="#-api-resources">API Resources</a> ·
-    <a href="#-getting-started">Getting Started</a> ·
-    <a href="#%EF%B8%8F-stack">Stack</a> ·
-    <a href="#-testing--calidad">Testing</a> ·
-    <a href="#-contributing">Contributing</a>
+    <a href="#descripción">Descripción</a> ·
+    <a href="#api-resources">API Resources</a> ·
+    <a href="#getting-started">Getting Started</a> ·
+    <a href="#arquitectura">Arquitectura</a> ·
+    <a href="#documentación-de-endpoints">Endpoints</a> ·
+    <a href="#contribución">Contribución</a>
   </p>
 </div>
 
@@ -33,7 +33,6 @@
 **DevKnowledge** es una API REST de código abierto diseñada para centralizar y distribuir conocimiento estructurado sobre programación de manera estandarizada, accesible y reutilizable.
 
 A diferencia de un sitio de documentación tradicional, DevKnowledge no está pensada para que el usuario final navegue artículos — está diseñada para que **las aplicaciones consuman información mediante HTTP** y reciban respuestas JSON listas para integrarse en cualquier proyecto.
-
 
 ### Problema que resuelve
 
@@ -60,21 +59,52 @@ La API expone contenido estructurado sobre múltiples tecnologías y lenguajes.
 | Buenas prácticas | SOLID, Clean Code, etc. |
 | Patrones de diseño | Factory, Observer, Repository, etc. |
 
-
-
 ---
 
 ## Getting Started
 
+Sigue estos pasos para levantar el proyecto localmente.
+
 ### Pre-requisitos
 
 - [Docker](https://www.docker.com/) y Docker Compose instalados.
+- PHP 8.3+ y Composer (para instalación local).
 - Una base de datos PostgreSQL 17 en [Neon](https://neon.tech) (o local).
-vKnowledge-API
+
+### Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/DevKnowledge-API.git
+cd DevKnowledge-API
 ```
 
+2. Copia el archivo de entorno y configura las variables (especialmente la conexión a base de datos y Redis):
+```bash
+cp .env.example .env
+```
 
-### Arquitectura
+3. Instala las dependencias con Composer:
+```bash
+composer install
+```
+
+4. Genera la key de la aplicación y corre las migraciones (si usas base de datos local):
+```bash
+php artisan key:generate
+php artisan migrate --seed
+```
+
+5. Levanta el servidor localmente:
+```bash
+php artisan serve
+# o usando Octane si está configurado localmente
+php artisan octane:start
+```
+
+---
+
+## Arquitectura
 
 ```text
 Aplicación cliente
@@ -92,10 +122,9 @@ PostgreSQL (Neon)       Redis Cache
 
 ---
 
-
 ## Uso de la API
 
-La API está en producción y lista para ser consumida de manera pública.
+La API está en producción y lista para ser consumida de manera pública. Actualmente, las rutas de lectura (`GET`) son públicas.
 
 **Base URL:** `https://devknowledge-api.onrender.com/api`
 
@@ -116,10 +145,6 @@ https://devknowledge-api.onrender.com/api/documentation
 
 ---
 
-
-
----
-
 ## Casos de Uso
 
 La API está diseñada para ser consumida por:
@@ -134,3 +159,17 @@ La API está diseñada para ser consumida por:
 
 ---
 
+## Contribución
+
+¡Las contribuciones son bienvenidas! Si deseas agregar nuevo contenido, mejorar los endpoints o corregir bugs:
+1. Haz un Fork del repositorio.
+2. Crea una rama para tu feature (`git checkout -b feature/NuevaCaracteristica`).
+3. Haz commit de tus cambios (`git commit -m 'feat: agrega nueva característica'`).
+4. Haz push a la rama (`git push origin feature/NuevaCaracteristica`).
+5. Abre un Pull Request.
+
+---
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT.
